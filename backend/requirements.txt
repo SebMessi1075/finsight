@@ -1,0 +1,17 @@
+fastapi==0.111.0
+uvicorn==0.29.0
+sqlalchemy==2.0.30
+psycopg2-binary==2.9.9
+alembic==1.13.1
+python-jose[cryptography]==3.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.9
+pandas==2.2.2
+numpy==1.26.4
+sentence-transformers==2.7.0
+scikit-learn==1.4.2
+rapidfuzz==3.9.3
+redis==5.0.4
+pydantic[email]==2.7.1
+pydantic-settings==2.2.1

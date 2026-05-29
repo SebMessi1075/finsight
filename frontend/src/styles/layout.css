@@ -1,0 +1,492 @@
+/* ── App shell ───────────────────────────────────────────────── */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--color-surface);
+  border-right: var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-wordmark {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: var(--topbar-h);
+  padding: 0 var(--sp-5);
+  border-bottom: var(--border);
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.sidebar-wordmark-text {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  letter-spacing: -0.025em;
+}
+
+/* ── Nav ── */
+.sidebar-nav {
+  flex: 1;
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.sidebar-nav-section {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: var(--sp-3) var(--sp-3) var(--sp-1);
+}
+
+.sidebar-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-2);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.sidebar-nav-item:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.sidebar-nav-item.active {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.sidebar-nav-item.active:hover {
+  background: var(--color-accent-bg);
+}
+
+/* Left-edge indicator line — sits at sidebar-nav's left padding edge */
+.sidebar-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--sp-3));
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 2px;
+  background: var(--color-accent);
+  border-radius: 0 1px 1px 0;
+}
+
+/* ── User footer ── */
+.sidebar-user {
+  padding: var(--sp-3) var(--sp-4);
+  border-top: var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+
+.sidebar-user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-user-name {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: var(--leading-tight);
+}
+
+.sidebar-user-email {
+  font-size: 11px;
+  color: var(--color-text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.sidebar-logout {
+  color: var(--color-text-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.sidebar-logout:hover {
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+}
+
+/* ── Body (right of sidebar) ─────────────────────────────────── */
+.layout-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ── Topbar ──────────────────────────────────────────────────── */
+.topbar {
+  height: var(--topbar-h);
+  background: var(--color-surface);
+  border-bottom: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-6);
+  flex-shrink: 0;
+  gap: var(--sp-4);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.topbar-title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.topbar-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+
+/* Upload button — primary action in topbar */
+.btn-upload {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 32px;
+  padding: 0 var(--sp-4);
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.btn-upload:hover {
+  background: var(--color-accent-dim);
+}
+
+/* ── Scrollable main content ─────────────────────────────────── */
+.layout-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-6);
+}
+
+/* ── Dashboard grid — 12-column ──────────────────────────────── */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-4);
+}
+
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-12 { grid-column: span 12; }
+
+/* ── Card base ───────────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  box-shadow: var(--shadow-xs);
+}
+
+.card-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0;
+}
+
+/* No border-bottom — hierarchy from weight + spacing alone */
+.card-section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--sp-5);
+}
+
+.card-section-title-secondary {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-3);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Generic empty state (non-hero) ─────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-12) var(--sp-6);
+  text-align: center;
+  gap: var(--sp-3);
+  color: var(--color-text-3);
+}
+
+.empty-state-title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-2);
+  letter-spacing: -0.01em;
+}
+
+.empty-state-body {
+  font-size: var(--text-sm);
+  color: var(--color-text-3);
+  max-width: 320px;
+  line-height: var(--leading-snug);
+}
+
+/* ── Ghost / outlined button ─────────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 32px;
+  padding: 0 var(--sp-4);
+  background: transparent;
+  color: var(--color-text-2);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+  font-family: var(--font-sans);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.btn-ghost:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Hero headline (above the upload zone) ───────────────────── */
+.hero-headline {
+  grid-column: span 12;
+  padding-bottom: var(--sp-2);
+}
+
+.hero-headline-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  letter-spacing: -0.035em;
+  line-height: var(--leading-tight);
+  margin-bottom: var(--sp-2);
+}
+
+.hero-headline-sub {
+  font-size: var(--text-base);
+  color: var(--color-text-2);
+  line-height: var(--leading-normal);
+  max-width: 520px;
+}
+
+/* Button row inside drop zone */
+.hero-drop-buttons {
+  display: flex;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Hero empty state (Overview first-run) ───────────────────── */
+.hero-grid {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--sp-5);
+}
+
+.hero-drop {
+  background: var(--color-surface);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-12) var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--sp-3);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  box-shadow: var(--shadow-xs);
+}
+
+.hero-drop:hover,
+.hero-drop--over {
+  border-color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+
+.hero-drop-icon {
+  color: var(--color-text-3);
+  transition: color var(--transition-fast);
+  margin-bottom: var(--sp-1);
+}
+
+.hero-drop--over .hero-drop-icon { color: var(--color-accent); }
+
+.hero-drop-title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.hero-drop-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-2);
+  line-height: var(--leading-snug);
+  max-width: 280px;
+}
+
+.hero-how {
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-xs);
+}
+
+.hero-how-title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--sp-5);
+}
+
+.hero-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.hero-step {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+}
+
+.hero-step-num {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-accent);
+  min-width: 18px;
+  padding-top: 1px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.hero-step-label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+  margin-bottom: 3px;
+}
+
+.hero-step-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-2);
+  line-height: var(--leading-normal);
+}

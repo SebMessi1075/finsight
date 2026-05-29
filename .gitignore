@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Node / React
+node_modules/
+dist/
+.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables — NEVER COMMIT THESE
+.env
+.env.local
+.env.production
+*.env
+backend/.env
+frontend/.env
+
+# Docker volumes (just in case)
+pgdata/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# OS
+desktop.ini
+
+# Large data files — don't commit CSVs with potentially personal data
+*.csv
+data/
+backend/data/
+
+# Build artifacts
+build/
+*.tar.gz
