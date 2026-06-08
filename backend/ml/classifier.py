@@ -22,7 +22,7 @@ def get_model():
     global _model, _label_names, _label_embeddings
     if _model is None:
         print("[ML] Loading sentence-transformer...")
-        _model = SentenceTransformer('all-MiniLM-L6-v2')
+        _model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
         _label_names = list(LABEL_DESCRIPTIONS.keys())
         _label_embeddings = _model.encode(list(LABEL_DESCRIPTIONS.values()), show_progress_bar=False)
     return _model, _label_names, _label_embeddings
